@@ -1,0 +1,23 @@
+.calculator-box{
+  height: 25rem;
+  background-color: rgb(207, 207, 207);
+  border-radius: 2%;
+}
+
+.keypad{
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(138, 138, 138);
+  height: 20rem;
+}
+
+.visor{
+  height: 5rem;
+  font-size: 2.5rem;
+}
+
+.buttons{
+  background-color: #ffffff;
+  border: 1px solid rgb(177, 177, 177);
+  height: 4.2rem;
+}
