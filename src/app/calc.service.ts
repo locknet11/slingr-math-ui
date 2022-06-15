@@ -5,8 +5,8 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root',
 })
 export class CalcService {
-  api: string = '/v1/calculate?';
-  mathwebservices: string = 'http://localhost:8080' + this.api;
+  api: string = 'api/v1/calculate?';
+  mathwebservices: string = window.location.origin + this.api;
 
   constructor(private httpClient: HttpClient) {}
 
