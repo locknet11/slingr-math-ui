@@ -1,41 +1,54 @@
 <div class="container-fluid">
   <div class="m-auto">
     <div class="row">
-      <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 text-center m-auto">
+      <div class="col-12 col-sm-12 col-md-8 col-lg-6 col-xl-6  m-auto">
 
         <div class="calculator-box mb-5">
-          <input type="text" class="w-100 visor form-control shadow-none">
+          <input  [(ngModel)]="expression" type="text" class="w-100 visor form-control shadow-none">
+          <div class="toolbar">
+              <div class="row mt-1 m-1">
+                  <div class="col-2 align-self-center">
+                      <label class="form-label ">Precision</label>
+                  </div>
+                  <div class="col-2 align-self-center">
+                    <input [(ngModel)]="precision" type="number" class="w-100">
+                  </div>
+                  <div class="col-8 align-self-center">
+                    <h6 class="text-end text-danger">{{errorMessage}}</h6>
+                  </div>
+              </div>
+          </div>
           <div class="keypad w-100">
               <div class="row m-2">
-                <div class="col-2"><button class="buttons w-100 p-1 btn">7</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">8</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">9</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">&#247;</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">&#8592;</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">C</button></div>
+                <div class="col-2"><button (click)="append('7')" class="buttons w-100 p-1 btn">7</button></div>
+                <div class="col-2"><button (click)="append('8')" class="buttons w-100 p-1 btn">8</button></div>
+                <div class="col-2"><button (click)="append('9')" class="buttons w-100 p-1 btn">9</button></div>
+                <div class="col-2"><button (click)="append('/')" class="buttons w-100 p-1 btn">&#247;</button></div>
+                <div class="col-2"><button (click)="pop()" class="buttons w-100 p-1 btn">&#8592;</button></div>
+                <div class="col-2"><button (click)="clearVisor()" class="buttons w-100 p-1 btn">C</button></div>
               </div>
               <div class="row m-2">
-                <div class="col-2"><button class="buttons w-100 p-1 btn">4</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">5</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">6</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">x</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">(</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">)</button></div>
+                <div class="col-2"><button (click)="append('4')" class="buttons w-100 p-1 btn">4</button></div>
+                <div class="col-2"><button (click)="append('5')" class="buttons w-100 p-1 btn">5</button></div>
+                <div class="col-2"><button (click)="append('6')" class="buttons w-100 p-1 btn">6</button></div>
+                <div class="col-2"><button (click)="append('*')" class="buttons w-100 p-1 btn">x</button></div>
+                <div class="col-2"><button (click)="append('(')" class="buttons w-100 p-1 btn">(</button></div>
+                <div class="col-2"><button (click)="append(')')" class="buttons w-100 p-1 btn">)</button></div>
               </div>
               <div class="row m-2">
-                <div class="col-2"><button class="buttons w-100 p-1 btn">1</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">2</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">3</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">-</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">x<sup>2</sup></button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">&#8730;</button></div>
+                <div class="col-2"><button (click)="append('1')" class="buttons w-100 p-1 btn">1</button></div>
+                <div class="col-2"><button (click)="append('2')" class="buttons w-100 p-1 btn">2</button></div>
+                <div class="col-2"><button (click)="append('3')" class="buttons w-100 p-1 btn">3</button></div>
+                <div class="col-2"><button (click)="append('-')" class="buttons w-100 p-1 btn">-</button></div>
+                <div class="col-2"><button (click)="append('^2')" class="buttons w-100 p-1 btn">x<sup>2</sup></button></div>
+                <div class="col-2"><button (click)="append('sqrt(')" class="buttons w-100 p-1 btn">&#8730;</button></div>
               </div>
               <div class="row m-2">
-                <div class="col-2"><button class="buttons w-100 p-1 btn">0</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">.</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">%</button></div>
-                <div class="col-2"><button class="buttons w-100 p-1 btn">+</button></div>
-                <div class="col-4"><button class="buttons w-100 p-1 btn">=</button></div>
+                <div class="col-2"><button (click)="append('0')" class="buttons w-100 p-1 btn">0</button></div>
+                <div class="col-2"><button (click)="append('.')" class="buttons w-100 p-1 btn">.</button></div>
+                <div class="col-2"><button (click)="append('%')" class="buttons w-100 p-1 btn">%</button></div>
+                <div class="col-2"><button (click)="append('+')" class="buttons w-100 p-1 btn">+</button></div>
+                <div class="col-4"><button (click)="result()" class="buttons w-100 p-1 btn">=</button></div>
               </div>
           </div>
         </div>
