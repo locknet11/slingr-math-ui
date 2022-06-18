@@ -31,7 +31,7 @@ export class CalculatorComponent implements OnInit {
           this.errorMessage = "";
           this.expression = data;
         }else {
-          this.errorMessage = "Syntax error";
+          this.errorMessage = data;
         }
       })
     }else {

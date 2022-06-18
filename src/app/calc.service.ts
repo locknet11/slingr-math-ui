@@ -11,6 +11,8 @@ export class CalcService {
   constructor(private httpClient: HttpClient) {}
 
   async calculate(expression: string, precision: number): Promise<any> {
+    console.log(window.location.origin);
+
     let query = new FormData();
     query.set('expression', btoa(expression));
 
